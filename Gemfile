@@ -2,7 +2,7 @@
 source 'http://ruby.taobao.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.5'
+gem 'rails', '4.1.6'
 
 # database for Active Record
 gem 'pg'
@@ -45,10 +45,13 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :test do
+  gem 'minitest-reporters'
+  gem 'mini_backtrace'
+  gem 'guard-minitest'
+end
+
 group :development, :test do
-  gem 'factory_girl_rails'
-  gem 'rspec-rails'
-  # DEBUG
   gem 'better_errors'
   gem "binding_of_caller"
   gem 'meta_request'
