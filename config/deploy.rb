@@ -2,13 +2,13 @@
 lock '3.2.1'
 
 set :application, 'giggle'
-set :repo_url, 'git@example.com:me/giggle.git'
+set :repo_url, 'git@github.com:FBSENDER/giggle.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
 # Default deploy_to directory is /var/www/my_app
-# set :deploy_to, '/var/www/my_app'
+set :deploy_to, '/home/work/giggle'
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -44,7 +44,7 @@ namespace :deploy do
     end
   end
 
-  after :restart, :'puma:restart'
+#  after :restart, :'puma:restart'
   after :publishing, :restart
 
   after :restart, :clear_cache do
