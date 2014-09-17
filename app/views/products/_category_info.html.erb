@@ -1,0 +1,17 @@
+<% if @current_category && !@current_category.product_category_info.nil? %>
+  <div id="category_info"class="row">
+    <div class="col-xs-12 col-md-12">
+      <div class="container_box">
+        <h5>
+        <a data-toggle="collapse" data-target="#category_info_details" href="#category_info">
+            <%= @current_category.name%>详情 +
+        </a>
+        </h5>
+        <div id="category_info_details" class="collapse">
+          <br/>
+          <%= @current_category.product_category_info.details %>  
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140202095649) do
+ActiveRecord::Schema.define(version: 20140917084340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,13 @@ ActiveRecord::Schema.define(version: 20140202095649) do
   end
 
   add_index "product_categories", ["name"], name: "index_product_categories_on_name", unique: true, using: :btree
+
+  create_table "product_category_infos", force: true do |t|
+    t.integer  "product_category_id"
+    t.text     "details"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "product_pictures", force: true do |t|
     t.string   "picture"

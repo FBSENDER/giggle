@@ -33,6 +33,8 @@ zh-CN:
         user_id: 用户
       product_category:
         name: 名称
+      product_category_info:
+        details: 详情
       product_picture:
         picture: 图片
         picture_content_type: 图片格式

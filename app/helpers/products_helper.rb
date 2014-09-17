@@ -11,4 +11,12 @@ module ProductsHelper
     end
     link_to fa_icon("bookmark"), product_collectionship_path(product), class: class_name, "data-toggle"=>"tooltip", title: link_title, method: link_path_method, remote: true
   end  
+
+  def index_title(current_category)
+    if current_category.nil?
+      title("酒店")
+    else
+      title(current_category.name)
+    end
+  end 
 end

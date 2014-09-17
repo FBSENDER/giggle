@@ -1,3 +1,5 @@
+<% index_title(@current_category) %>
+
 <%= render "products_sort" %>
 
 <div id="product_items">
@@ -6,3 +8,5 @@
   </div>
   <%= will_paginate @products %> 
 </div>
+
+<%= render "category_info" %>

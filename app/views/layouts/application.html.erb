@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Giggle</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <meta name="renderer" content="webkit">
-  <%= csrf_meta_tags %>
+<title><%= yield :title %></title>
+<meta name="keywords" content="<%= yield :head_keyword %>">
+<meta name="description" content="<%= yield :head_desc %>">
+<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<meta name="renderer" content="webkit">
+<%= csrf_meta_tags %>
 </head>
 <body>
-  
-  <div class="container">
-    <%= render "layouts/navbar/user_navbar" %>
-    <%= yield %>
-    <%= render "layouts/shared/go_top" %>
-    <hr>
-    <%= render "layouts/shared/application_footer" %>
-  </div>
+
+<div class="container">
+  <%= render "layouts/navbar/user_navbar" %>
+  <%= yield %>
+  <%= render "layouts/shared/go_top" %>
+  <hr>
+  <%= render "layouts/shared/application_footer" %>
+</div>
 </body>
 </html>

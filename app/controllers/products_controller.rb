@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
   def index
     @products = Product.order(sort_column + " " + sort_direction).classify_published(params)
     @product_categories = ProductCategory.all
+    @current_category = @product_categories.where(:id => params[:category].to_i).first
   end
 
   def show

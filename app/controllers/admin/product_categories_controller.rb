@@ -11,11 +11,15 @@ class Admin::ProductCategoriesController < Admin::BaseController
 
   def new
     @product_category = ProductCategory.new
+    @product_category.product_category_info = ProductCategoryInfo.new
   end
 
   def create
     @product_category = ProductCategory.new(product_category_params)
+    category_info = ProductCategoryInfo.new(info_params)
     if @product_category.save
+      category_info.product_category_id = @product_category.id
+      category_info.save
       flash[:success] = '创建成功！'
       redirect_to admin_product_categories_path
     else
@@ -25,10 +29,15 @@ class Admin::ProductCategoriesController < Admin::BaseController
   end
 
   def edit
+    if @product_category.product_category_info.nil?
+      @product_category.product_category_info = ProductCategoryInfo.new
+      @product_category.product_category_info.product_category_id = @product_category.id
+    end
   end
 
   def update
     if @product_category.update(product_category_params)
+      @product_category.product_category_info.update(info_params)
       flash[:success] = '更新成功！'
       redirect_to admin_product_categories_path
     else
@@ -38,6 +47,7 @@ class Admin::ProductCategoriesController < Admin::BaseController
   end
 
   def destroy
+    @product_category.product_category_info.destroy if @product_category.product_category_info
     @product_category.destroy
     @product_categories = ProductCategory.paginate(page: params[:page])
     flash[:success] = '删除成功！'
@@ -51,6 +61,10 @@ class Admin::ProductCategoriesController < Admin::BaseController
   private
     def product_category_params
       params.require(:product_category).permit(:name)
+    end
+
+    def info_params
+      params.require(:product_category_info).permit(:details)
     end
 
     def find_product_category
