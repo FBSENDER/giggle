@@ -40,6 +40,10 @@
                     </span>
                   </li>
                   <li class="border_bottom">
+                    <label>产品分类</label>
+                    <span><%= link_to "home", root_path %> / <%= link_to "this", "/products?category=1"%></span>
+                  </li>
+                  <li class="border_bottom">
                     <label>产品描述</label>
                     <span><%= @product.description %></span>
                   </li>

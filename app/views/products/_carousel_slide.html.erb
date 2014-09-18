@@ -8,7 +8,7 @@
   <div class="carousel-inner">
     <% @product.product_pictures.each_with_index do |product_picture, index| %>
       <div class="item <%= 'active' if index == 0 %>">
-        <%= image_tag product_picture.picture_url(:large) %>
+        <%= image_tag product_picture.picture_url(:large), alt: "#{@product.name}-#{index}" %>
       </div>
     <% end %>
   </div>
