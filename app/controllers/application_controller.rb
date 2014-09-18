@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
+  helper FontAwesome::Rails::IconHelper
+  helper SessionsHelper
+  helper LikeshipsHelper
   protect_from_forgery with: :exception
   include SessionsHelper
 
