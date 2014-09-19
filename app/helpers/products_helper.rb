@@ -19,4 +19,12 @@ module ProductsHelper
       title(current_category.name)
     end
   end 
+
+  def index_desc(current_category)
+    if current_category.nil?
+      head_desc("空气净化器_空气净化机_AirClean")
+    else
+      head_desc(current_category.name)
+    end
+  end
 end
