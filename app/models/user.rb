@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
 
-  include Rolable
+  #include Rolable
 
   has_many :evaluates
   has_many :messages
@@ -69,6 +69,32 @@ class User < ActiveRecord::Base
     user = user.where("email LIKE ?", "%#{this_params[:email]}%") if this_params[:email].present?
     user = user.where("name LIKE ?", "%#{this_params[:name]}%") if this_params[:name].present?
     user.paginate(page: this_params[:page])
+  end
+
+  #roleable
+
+  ROLES = %w[admin manager user]
+  ROLES_CN = %w[超级管理员 管理员 用户]
+  ROLES_CHECKBOX = [['admin', '超级管理员'], ['manager', '管理员'], ['user', '用户']]
+
+  def roles=(roles)
+    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
+  end
+
+  def roles
+    ROLES.reject do |r|
+      ((roles_mask.to_i || 0) & 2**ROLES.index(r)).zero?
+    end
+  end
+
+  def roles_cn
+    ROLES_CN.reject do |r|
+      ((roles_mask.to_i || 0) & 2**ROLES_CN.index(r)).zero?
+    end.join(',')
+  end
+
+  def is?(role)
+    roles.include?(role.to_s)
   end
 
 end

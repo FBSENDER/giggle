@@ -1,4 +1,4 @@
-class User
+#class User
   module Rolable
     extend ActiveSupport::Concern
 
@@ -31,4 +31,4 @@ class User
     module ClassMethods
     end
   end
-end
+#end
