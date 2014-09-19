@@ -14,7 +14,7 @@ module ProductsHelper
 
   def index_title(current_category)
     if current_category.nil?
-      title("酒店")
+      title("空气净化器_空气净化机_AirClean")
     else
       title(current_category.name)
     end
