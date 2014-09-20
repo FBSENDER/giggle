@@ -1,6 +1,4 @@
-<% title(@product.name) %>
-<% head_desc(@product.description) %>
-<% head_keyword((@product.name.split('_') << @product.name).join(','))%>
+<% show_head(@product)%>
 
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-12">
