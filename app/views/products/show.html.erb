@@ -41,7 +41,7 @@
                   </li>
                   <li class="border_bottom">
                     <label>产品分类</label>
-                    <span><%= link_to "home", root_path %> / <%= link_to "this", "/products?category=1"%></span>
+                    <span><%= link_to "空气净化器", root_path %> / <%= link_to @product.product_category.name, "/products?category=#{@product.product_category_id}"%></span>
                   </li>
                   <li class="border_bottom">
                     <label>产品描述</label>
