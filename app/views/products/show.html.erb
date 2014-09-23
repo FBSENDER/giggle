@@ -89,3 +89,10 @@
     </div>
   </div>
 </div>
+<% if @related_products && @related_products.size > 0 %>
+<div id="product_items">
+  <div class="row">
+    <%= render @related_products %>
+  </div>
+<% end %>
+</div>

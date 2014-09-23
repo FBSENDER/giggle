@@ -3,6 +3,12 @@
 <%= render "products_sort" %>
 
 <div id="product_items">
+<% if @related_products && @related_products.size > 0 %>
+  <div class="row">
+    <%= render @related_products %>
+  </div>
+<% end %>
+
   <div id="scroll_container" class="row">
     <%= render @products %>
   </div>
