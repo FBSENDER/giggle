@@ -11,10 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140917084340) do
+ActiveRecord::Schema.define(version: 20140924061817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "amazon_products", force: true do |t|
+    t.string   "asin"
+    t.string   "title"
+    t.decimal  "price",                precision: 10, scale: 2
+    t.string   "url"
+    t.string   "img_1"
+    t.string   "img_2"
+    t.string   "img_3"
+    t.string   "brand"
+    t.text     "features"
+    t.text     "descriptions"
+    t.string   "amazon_category_id"
+    t.string   "amazon_category_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "collectionships", force: true do |t|
     t.integer  "user_id"
@@ -107,6 +124,17 @@ ActiveRecord::Schema.define(version: 20140917084340) do
     t.integer  "messages_count",                              default: 0
     t.integer  "evaluates_count",                             default: 0
   end
+
+  create_table "related_keywords", force: true do |t|
+    t.string   "keyword_string"
+    t.string   "suggestions"
+    t.string   "related_keywords"
+    t.boolean  "is_popular"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "related_keywords", ["keyword_string"], name: "ix_keyword_string", using: :btree
 
   create_table "user_pictures", force: true do |t|
     t.string   "picture"
