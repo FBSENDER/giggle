@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12">
+    <div id="about_product" class="container_box">
+      <div id="product_info">
+        <div class="product_container">
+          <h3 class="product_name">
+            <i class="fa fa-info-circle"></i>
+            <%= @product.title %>
+          </h3>
+          <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-6">
+              <div class="product_pictures">
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-6">
+              <div class="product_description">
+                <ul class="list-unstyled">
+                  <li class="border_bottom">
+                    <label>价格</label>
+                    <strong>¥ <%= @product.price %></strong>
+                  </li>
+                  <li class="border_bottom">
+                    <label>创建时间</label>
+                    <span><%= @product.created_at.strftime "%Y-%m-%d %H:%M:%S" %></span>
+                  </li>
+                  <li class="border_bottom">
+                    <label>产品分类</label>
+                    <span><%= link_to "空气净化器", root_path %> / <%= link_to @product.product_category.name, "/products?category=#{@product.product_category_id}"%></span>
+                  </li>
+                  <li class="border_bottom">
+                    <label>产品描述</label>
+                    <span><%= @product.features %></span>
+                  </li>
+                  <li>
+                    <%= link_to_if @product.url.present?, raw("<i class='fa fa-shopping-cart'></i> 购买"), @product.url, class: "btn btn-primary", target: "_blank" do %>
+                      <%= link_to "暂不提供购买", "#", class: "btn btn-default disabled" %>
+                    <% end %>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+              <%= sanitize(@product.descriptions) %>
+            </div>
+          </div>
+        </div>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>

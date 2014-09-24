@@ -51,6 +51,7 @@ Rails.application.routes.draw do
   end
 
   resources :notifications, only: [:index, :destroy]
+  resources :amazon_products, only: [:index, :show]
 
   root 'products#index'
 end
