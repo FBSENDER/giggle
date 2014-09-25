@@ -1,0 +1,22 @@
+<div class="col-xs-12 col-sm-6 col-md-4">
+  <div class="item container_box">
+    <div class="product_thumbnail">
+      <%= link_to image_tag(amazon_product.img_2,alt: "#{amazon_product.title}-图片"), amazon_product_path(amazon_product) %>
+    </div>
+    <div class="product_info">
+      <h5>
+        <%= link_to amazon_product.title, amazon_product_path(amazon_product) %>
+        <small>
+           ￥<%= amazon_product.price %>
+        </small>
+      </h5>
+      <small>
+        <% if amazon_product.features && amazon_product.features.size > 0 %>
+          <%= amazon_product.features.truncate(100)  %>
+        <% else %>
+          <%= amazon_product.title %>
+        <% end %>
+      </small>
+    </div>
+  </div>
+</div>

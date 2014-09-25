@@ -9,7 +9,8 @@
           </h3>
           <div class="row">
             <div class="col-xs-12 col-sm-8 col-md-6">
-              <div class="product_pictures">
+              <div class="product_pictures" style="padding-top:40px">
+                <%= image_tag @product.img_3, alt: "#{@product.title}-图片" %>
               </div>
             </div>
             <div class="col-xs-12 col-sm-4 col-md-6">
@@ -25,11 +26,14 @@
                   </li>
                   <li class="border_bottom">
                     <label>产品分类</label>
-                    <span><%= link_to "空气净化器", root_path %> / <%= link_to @product.product_category.name, "/products?category=#{@product.product_category_id}"%></span>
+                    <span><%= link_to "空气净化器", root_path %> / <%= @product.amazon_category_name%></span>
                   </li>
                   <li class="border_bottom">
                     <label>产品描述</label>
-                    <span><%= @product.features %></span>
+                  <% @product.features.split("###").each do |feature|%>
+                    <span><%= feature %></span>
+                    <br/>
+                  <% end %>
                   </li>
                   <li>
                     <%= link_to_if @product.url.present?, raw("<i class='fa fa-shopping-cart'></i> 购买"), @product.url, class: "btn btn-primary", target: "_blank" do %>
@@ -43,12 +47,19 @@
           <hr>
           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
-              <%= sanitize(@product.descriptions) %>
+              <%= sanitize(CGI.unescapeHTML(@product.descriptions)) if @product.descriptions %>
             </div>
           </div>
         </div>
-        <hr>
       </div>
     </div>
   </div>
+</div>
+<% if @related_products_1.size > 0 || @related_products_2.size > 0 %>
+<div id="product_items">
+  <div class="row">
+    <hr>
+    <%= render (@related_products_1 + @related_products_2) %>
+  </div>
+<% end %>
 </div>
