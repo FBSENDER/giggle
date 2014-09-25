@@ -36,7 +36,7 @@
                   <% end %>
                   </li>
                   <li>
-                    <%= link_to_if @product.url.present?, raw("<i class='fa fa-shopping-cart'></i> 购买"), @product.url, class: "btn btn-primary", target: "_blank" do %>
+                    <%= link_to_if @product.url.present?, raw("<i class='fa fa-shopping-cart'></i> 购买"), @product.url, class: "btn btn-primary", target: "_blank", rel: "nofollow" do %>
                       <%= link_to "暂不提供购买", "#", class: "btn btn-default disabled" %>
                     <% end %>
                   </li>
