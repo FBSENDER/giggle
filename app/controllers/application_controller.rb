@@ -11,4 +11,12 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, danger: exception.message
   end
 
+  rescue_from ActionController::RoutingError, :with => :render_to_404
+  rescue_from ActiveRecord::RecordNotFound, :with => :render_to_404
+
+  private
+
+  def render_to_404 
+    render :template => "errors/404"
+  end
 end

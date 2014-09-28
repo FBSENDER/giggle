@@ -5,7 +5,7 @@
     </div>
     <div class="product_info">
       <h5>
-        <%= link_to amazon_product.title, amazon_product_path(amazon_product) %>
+        <%= link_to truncate(amazon_product.title,length: 20, separator: ' ', omission: '_') + amazon_product.asin, amazon_product_path(amazon_product) %>
         <small>
            ￥<%= amazon_product.price %>
         </small>

@@ -1,0 +1,51 @@
+<% title("#{@current_idiom.keyword}_空气净化器") %>
+<% head_keyword(@current_idiom.keyword) %>
+<% head_desc(@current_idiom.descriptions) %>
+<div class="row">  
+  <ol class="breadcrumb">
+    <% @high_level_links.each_with_index do |hl,index| %>
+      <% if index == @high_level_links.size - 1%>
+        <li class="active"><%= hl[:text] %></li>
+        <% next %>
+      <% end %>
+      <% p hl %>
+      <li><%= link_to hl[:text], hl[:url]%></li>
+    <% end %>
+  </ol>
+</div>
+<% if @related_products.size > 0 || @related_products.size > 0 %>
+<div id="product_items">
+  <div class="row">
+    <%= render @related_products %>
+  </div>
+</div>
+<% end %>
+
+<div class="row">
+  <div class="col-xs-12 col-md-12">
+    <div class="container_box">
+      <h5>
+        <a data-toggle="collapse" data-target="#amazon_product_inside_links" href="#related_links">
+          相关链接 +
+        </a>
+      </h5>
+      <div id="amazon_product_inside_links" class="collapse">
+        <br/>
+        <% if @same_level_links.size > 0 %>
+        <p>
+          <% @same_level_links.each do |sl|%>
+            <%= link_to sl[:text], sl[:url]%>
+          <% end %>
+        <p>
+        <% end %>
+        <% if @low_level_links.size > 0 %>
+        <p>
+          <% @low_level_links.each do |sl|%>
+            <%= link_to sl[:text], sl[:url]%>
+          <% end %>
+        <p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

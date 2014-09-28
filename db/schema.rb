@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140925080813) do
+ActiveRecord::Schema.define(version: 20140926085822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,17 @@ ActiveRecord::Schema.define(version: 20140925080813) do
     t.datetime "updated_at"
     t.integer  "messages_count", default: 0
   end
+
+  create_table "idioms", force: true do |t|
+    t.string   "keyword"
+    t.integer  "level"
+    t.integer  "page"
+    t.text     "descriptions"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "idioms", ["level", "page"], name: "ix_level_page", using: :btree
 
   create_table "likeships", force: true do |t|
     t.integer  "user_id"

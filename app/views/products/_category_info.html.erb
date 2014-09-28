@@ -58,3 +58,22 @@
   </div>
 
 <% end %>
+<% if @links && @links.size > 0 %>
+<div class="row">
+  <div class="col-xs-12 col-md-12">
+    <div class="container_box">
+      <h5>
+        <a data-toggle="collapse" data-target="#category_inside_links" href="#category_links">
+          <%= @current_category.name%>相关链接 +
+        </a>
+      </h5>
+      <div id="category_inside_links" class="collapse">
+        <br/>
+        <% @links.each do |rl| %>
+          <%= link_to rl[:text], rl[:url]%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

@@ -9,6 +9,21 @@ class ProductsController < ApplicationController
     if sort_column == "id" && sort_direction == "asc"
       @related_products = Product.published.order("published_at desc").limit(3)
     end
+    if !@current_category.nil?
+      @links = []
+      amazon_products_count = AmazonProduct.count
+      category_id = params[:category].to_i
+      10.times do |time_0|
+        10.times do |time_1|
+          page = (category_id - 1) * 10 + time_0 * 100 + time_1
+          break if page * 100 > amazon_products_count
+          idiom = Idiom.where(:level => 1, :page => page).first
+          text = idiom.nil? ? '空气净化器' : "空气净化器_#{idiom.keyword}"
+          url = "/amazon_products?level=1&page=#{page}"
+          @links << {:text => text, :url => url}
+        end
+      end
+    end
   end
 
   def show

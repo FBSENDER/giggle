@@ -1,3 +1,6 @@
+<% title(truncate(@product.title,length: 20, separator: ' ', omission: '_') + @product.asin) %>
+<% head_keyword(@product.title.split(' ').join(',')) %>
+<% head_desc(@product.title) %>
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-12">
     <div id="about_product" class="container_box">
@@ -26,7 +29,12 @@
                   </li>
                   <li class="border_bottom">
                     <label>产品分类</label>
-                    <span><%= link_to "空气净化器", root_path %> / <%= @product.amazon_category_name%></span>
+                    <span>
+                    <% @links.each_with_index do |bl,index|%>
+                      <%= link_to bl[:text], bl[:url]%> /
+                    <%end%>
+                    <%= @product.amazon_category_name %>
+                    </span>
                   </li>
                   <li class="border_bottom">
                     <label>产品描述</label>
@@ -61,5 +69,5 @@
     <hr>
     <%= render (@related_products_1 + @related_products_2) %>
   </div>
-<% end %>
 </div>
+<% end %>
