@@ -88,7 +88,7 @@ class AmazonProductsController < ApplicationController
     category_id = (page / (10 ^ (level + 1)) + 1) % 10
     category = ProductCategory.where(:id => category_id).first
     return 'http://air.vxixi.com' if category.nil?
-    "/products?category_id=#{category_id}"
+    "/products?category=#{category_id}"
   end
 
   def build_link_top
