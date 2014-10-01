@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   helper FontAwesome::Rails::IconHelper
   helper SessionsHelper
   helper LikeshipsHelper
+  helper UserPicturesHelper
   protect_from_forgery with: :exception
   include SessionsHelper
 
