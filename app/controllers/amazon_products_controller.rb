@@ -44,6 +44,10 @@ class AmazonProductsController < ApplicationController
     @links << build_link_level_0_1(0,page_0)
   end
 
+  def sitemap
+    @idioms = Idiom.all
+  end
+
   private
 
   def check_params

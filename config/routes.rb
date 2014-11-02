@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resource :session, only: [:create, :destroy]
   get '/sign-up', to: 'users#new', as: :sign_up
+  get "/amazon_products/sitemap"
 
   namespace :admin do
     root 'products#index'

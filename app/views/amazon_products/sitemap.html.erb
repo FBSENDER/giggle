@@ -1,0 +1,15 @@
+<div class="row">
+  <h1>air.vxixi.com站点地图</h1>
+  <h2>站点地图LEVEL1</h2>
+  <% @idioms.select{|item| item.level == 1}.each do |idiom| %>
+    <a href="/amazon_products?level=1&page=<%= idiom.page %>">
+      <%= "#{idiom.keyword}_空气净化器" %>
+    </a>
+  <% end %>
+  <h2>站点地图LEVEL0</h2>
+  <% @idioms.select{|item| item.level == 0}.each do |idiom| %>
+    <a href="/amazon_products?level=0&page=<%= idiom.page%>">
+      <%= "#{idiom.keyword}_空气净化器" %>
+    </a>
+</div>
+
