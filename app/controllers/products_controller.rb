@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
           page = (category_id - 1) * 10 + time_0 * 100 + time_1
           break if page * 100 > amazon_products_count
           idiom = Idiom.where(:level => 1, :page => page).first
-          text = idiom.nil? ? '空气净化器' : "空气净化器_#{idiom.keyword}"
+          text = idiom.nil? ? '空气净化器' : "#{idiom.keyword}_空气净化器"
           url = "/amazon_products?level=1&page=#{page}"
           @links << {:text => text, :url => url}
         end

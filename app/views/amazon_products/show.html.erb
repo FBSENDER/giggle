@@ -6,10 +6,10 @@
     <div id="about_product" class="container_box">
       <div id="product_info">
         <div class="product_container">
-          <h3 class="product_name">
+          <h1 class="product_name">
             <i class="fa fa-info-circle"></i>
             <%= @product.title %>
-          </h3>
+          </h1>
           <div class="row">
             <div class="col-xs-12 col-sm-8 col-md-6">
               <div class="product_pictures" style="padding-top:40px">
@@ -39,7 +39,7 @@
                   <li class="border_bottom">
                     <label>产品描述</label>
                   <% @product.features.split("###").each do |feature|%>
-                    <span><%= feature %></span>
+                    <span><%= sanitize(CGI.unescapeHTML(feature)) %></span>
                     <br/>
                   <% end %>
                   </li>

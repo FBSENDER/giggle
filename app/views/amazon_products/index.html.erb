@@ -1,6 +1,6 @@
 <% title("#{@current_idiom.keyword}_空气净化器") %>
 <% head_keyword(@current_idiom.keyword) %>
-<% head_desc(@current_idiom.descriptions) %>
+<% head_desc("#{@current_idiom.keywod} 空气净化器，空气净化器又称空气清洁器、空气净化机、空气清洁机，是指能够吸附、分解或转化各种空气污染物（一般包括PM2.5、粉尘、花粉、异味、甲醛之类的装修污染、细菌、过敏原等），有效提高空气清洁度的产品，主要分为家用 、商用、工业、楼宇。当下PM2.5污染严重，家里或是办公环境添置一台合适的空气净化器，能够有效的净化空气，去除PM2.5，保证大家的健康。") %>
 <div class="row">  
   <ol class="breadcrumb">
     <% @high_level_links.each_with_index do |hl,index| %>
@@ -12,6 +12,7 @@
       <li><%= link_to hl[:text], hl[:url]%></li>
     <% end %>
   </ol>
+  <h1><%= "#{@current_idiom.keyword}_空气净化器" %></h1>
 </div>
 <% if @related_products.size > 0 || @related_products.size > 0 %>
 <div id="product_items">

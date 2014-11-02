@@ -12,7 +12,7 @@
       </h5>
       <small>
         <% if amazon_product.features && amazon_product.features.size > 0 %>
-          <%= amazon_product.features.truncate(100)  %>
+          <%= sanitize(CGI.unescapeHTML(amazon_product.features)).truncate(100)  %>
         <% else %>
           <%= amazon_product.title %>
         <% end %>
