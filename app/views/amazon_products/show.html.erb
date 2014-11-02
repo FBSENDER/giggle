@@ -1,4 +1,4 @@
-<% title(truncate(@product.title,length: 20, separator: ' ', omission: '_') + @product.asin) %>
+<% title(truncate(@product.title,length: 20, separator: ' ', omission: '_') + "报价_评测_怎么样") %>
 <% head_keyword(@product.title.split(' ').join(',')) %>
 <% head_desc(@product.title) %>
 <div class="row">

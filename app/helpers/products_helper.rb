@@ -32,7 +32,7 @@ module ProductsHelper
     if current_category.nil?
       title("#{part_1}空气净化器_#{part_2}空气净化机_AirClean")
     else
-      title("#{part_1}#{part_2}#{current_category.name}")
+      title("#{part_1}#{part_2}#{current_category.name}_报价_评测_怎么样")
     end
   end 
 
@@ -59,7 +59,7 @@ module ProductsHelper
   end
 
   def show_head(product)
-    title(product.name)
+    title("#{product.name}_报价_评测_怎么样")
     head_desc(product.description)
     head_keyword((product.name.split('_') << product.name).join(','))
   end
