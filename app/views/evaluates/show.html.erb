@@ -1,12 +1,16 @@
+<% title( @evaluate.title) %>
+<% head_keyword(@evaluate.title) %>
+<% head_desc(@evaluate.title) %>
+
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-12">
     <div id="about_product" class="container_box">
       <%= render 'shared/product_head' %>
       <div id="evaluate_item_info">
         <%= render "layouts/shared/flash_notice" %>
-        <h3>
+        <h1>
           <%= @evaluate.title %>
-        </h3>
+        </h1>
         <div class="media">
           <%= link_to user_picture_cover(@evaluate.user.cover.try(:picture_url, :cover), "cover"), user_path(@evaluate.user), class: "pull-left" %>
           <div class="media-body">
